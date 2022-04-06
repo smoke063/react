@@ -1,4 +1,4 @@
 
-export default function ({message}) {
-    return <span>{message}</span>
+export default function Message ({message}) {
+    return <div>{message}</div>
 }

@@ -1,14 +1,27 @@
 import './App.css';
 
+import {useState} from "react";
+
+import Input from "./components/Input";
 import Message from "./components/Message";
+import MessageClass from "./components/MessageClass";
 
 function App() {
 
-  const customText = 'My Text';
+
+  const [text, setText] = useState('')
+
+  const textChange = (e) => {
+      setText(e.target.value)
+  }
 
   return (
     <div className="app">
-      <Message message={customText} />
+     <div className="form">
+         <Input onChange={textChange} />
+         <Message message={text} />
+         <MessageClass message={text} />
+     </div>
     </div>
   );
 }
