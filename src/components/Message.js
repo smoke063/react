@@ -1,4 +1,4 @@
 
-export default function ({message}) {
+export default function Message ({message}) {
     return <div>{message}</div>
 }
