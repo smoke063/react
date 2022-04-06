@@ -1,4 +1,12 @@
 .app {
-
+    height: 100%;
 }
 
+.form {
+    width: 350px;
+    height: 250px;
+    background-color: pink;
+    margin: auto;
+    padding: 25px;
+    text-align: center;
+}

@@ -1,4 +1,4 @@
 
 export default function ({message}) {
-    return <span>{message}</span>
+    return <div>{message}</div>
 }
