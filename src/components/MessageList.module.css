@@ -1,0 +1,13 @@
+
+.message {
+    padding-bottom: 5px;
+    border-bottom: #b3d4fc 1px solid;
+}
+
+.field {
+    padding: 0 5px 5px 5px;
+}
+
+.fontWeight {
+    font-weight: bold;
+}
