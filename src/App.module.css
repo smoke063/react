@@ -1,24 +1,31 @@
 .app {
   height: 100%;
   width: 100%;
+}
+
+.main {
   display: flex;
+  justify-content: space-around;
+  margin: 25px;
+}
+
+.chat {
+  border: #b3d4fc 2px solid;
+  border-radius: 5px;
+  width: 200px;
 }
 
 .app .messageListContainer {
-  margin-top: 50px;
   margin-left: 50px;
-  height: 200px;
   color: black;
   overflow: auto;
+  display: inline-block;
 }
 
 .form {
-  display: inline-block;
-  border: #b3d4fc 1px solid;
+  border: #b3d4fc 2px solid;
+  border-radius: 10px;
   width: 500px;
-  height: 200px;
-  margin-left: 50px;
-  margin-top: 50px;
   padding: 25px;
 }
 

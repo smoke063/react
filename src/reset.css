@@ -365,8 +365,9 @@ textarea {
   padding: 0.2em 0;
 }
 
-html, body, form {
+html, body {
   height: 100%;
+  overflow: hidden;
 }
 #root {
   height: 100%;
