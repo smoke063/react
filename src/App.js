@@ -1,14 +1,19 @@
-import {useEffect, useState, useCallback} from "react";
-import { v4 as uuid } from 'uuid';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-
-import styles from './App.module.css';
-
-import MessageList from "./components/MessageList";
-import Chat from "./components/Chat";
-
+import {
+    useEffect,
+    useState,
+    useCallback
+} from "react";
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+    Link
+} from "react-router-dom";
+import Home from "./pages/Home";
+import NotFound from "./components/NotFound";
+import Profile from "./pages/Profile";
+import Chats from "./pages/Chats";
+import NoChat from "./components/NoChat";
 
 function App() {
 
@@ -55,49 +60,26 @@ function App() {
     }, [messages])
 
     return (
-        <div className={styles.app}>
-            {
-                lastAuthor &&
-                <div style={{padding: "10px", marginTop: '10px', textAlign: 'center'}}>
-                    Message Author <span style={{color: "red"}}>{lastAuthor}</span> was sent!
-                </div>
-            }
-          <div className={styles.main}>
-              <div className={styles.chat}>
-                  <Chat array={[
-                      {id: uuid(), name: 'name 1'}
-                  ]}></Chat>
-              </div>
-              <Box
-                  component="form"
-                  sx={{
-                      '& > :not(style)': {m: 1, width: '25ch'},
-                  }}
-                  noValidate
-                  autoComplete="off"
-                  className={styles.form}
-              >
-                  <TextField
-                      autoFocus
-                      value={author}
-                      onChange={onChangeAuthor}
-                      id="outlined-basic"
-                      label="Author"
-                      variant="outlined"
-                  />
-                  <TextField
-                      value={text}
-                      onChange={onChangeText}
-                      id="standard-basic"
-                      label="Text"
-                      variant="standard"/>
-                  <Button variant="contained" onClick={onClick}>Save</Button>
-              </Box>
-              <div className={styles.messageListContainer}>
-                  <MessageList messages={messages}></MessageList>
-              </div>
-          </div>
-        </div>
+        <BrowserRouter>
+            <ul>
+                <li>
+                    <Link to="/">home</Link>
+                </li>
+                <li>
+                    <Link to="/profile">profile</Link>
+                </li>
+                <li>
+                    <Link to="/chats">chats</Link>
+                </li>
+            </ul>
+            <Routes>
+                <Route exact path="/" element={<Home/>}/>
+                <Route exact path="/profile" element={<Profile/>}/>
+                <Route exact path="/chats/:chatId" element={<Chats/>}/>
+                <Route exact path="/nochat" element={<NoChat/>} />
+                <Route path="*" element={<NotFound/>}/>
+            </Routes>
+        </BrowserRouter>
     );
 }
 
