@@ -9,8 +9,8 @@ const Message = ({author, text}) => <div className={styles.message}>
     </div>
 </div>
 
-const MessageList = ({messages} ) => {
+const MessagesList = ({messages} ) => {
     return messages.map((message) =><Message key={message.author} author={message.author} text={message.text} />);
 }
 
-export default MessageList
+export default MessagesList
