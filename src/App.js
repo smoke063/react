@@ -15,49 +15,26 @@ import Profile from "./pages/Profile";
 import Chats from "./pages/Chats";
 import NoChat from "./components/NoChat";
 
+const AUTHORS = {
+    BOT: 'BOT',
+    ME: 'ME'
+};
+
+
+const initialChats = {
+    id1: {
+        name: "Chat1",
+        messages: [{ text: "FirstMessage", author: AUTHORS.BOT }],
+    },
+    id2: {
+        name: "Chat2",
+        messages: [{ text: "FirstMessageHereToo!", author: AUTHORS.ME }],
+    },
+};
+
 function App() {
 
-    const [messages, setMessages] = useState([]);
-    const [author, setAuthor] = useState('');
-    const [text, setText] = useState('');
-    const [lastAuthor, setLastAuthor] = useState('');
-
-
-    const onChangeAuthor = useCallback((e) => {
-        setAuthor(e.target.value);
-    }, []);
-
-    const onChangeText = useCallback((e) => {
-        setText(e.target.value);
-    }, []);
-
-
-    const onClick = (e) => {
-
-        e.preventDefault();
-
-        setMessages([
-            ...messages,
-            {
-                author,
-                text
-            }
-        ]);
-        setAuthor('');
-        setText('');
-    }
-
-    let delay = null;
-    useEffect(() => {
-
-        if (messages[messages.length - 1]?.author) {
-            clearTimeout(delay);
-            delay = setTimeout(() => {
-                setLastAuthor(messages[messages.length - 1]?.author);
-            }, 1500);
-        }
-
-    }, [messages])
+    const [chats, setChats] = useState(initialChats);
 
     return (
         <BrowserRouter>
@@ -75,8 +52,8 @@ function App() {
             <Routes>
                 <Route exact path="/" element={<Home/>}/>
                 <Route exact path="/profile" element={<Profile/>}/>
-                <Route exact path="/chats/:chatId" element={<Chats/>}/>
-                <Route exact path="/nochat" element={<NoChat/>} />
+                <Route exact path="/chats/:chatId?" element={<Chats chats={chats} setChats={setChats}/>}/>
+                <Route exact path="/nochat" element={<NoChat chats={chats}/>} />
                 <Route path="*" element={<NotFound/>}/>
             </Routes>
         </BrowserRouter>
