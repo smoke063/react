@@ -5,34 +5,15 @@ import {
     Route,
     useMatch,
 } from "react-router-dom";
-import {
-    useState
-} from "react";
 import MessagesList from "../components/MessageList";
-import ChatList from "../components/ChatList";
-
-const AUTHORS = {
-    BOT: 'BOT',
-    ME: 'ME'
-};
-
-const initialChats = {
-    id1: {
-        name: "Chat1",
-        messages: [{ text: "FirstMessage", author: AUTHORS.BOT }],
-    },
-    id2: {
-        name: "Chat2",
-        messages: [{ text: "FirstMessageHereToo!", author: AUTHORS.ME }],
-    },
-};
+import {ChatList} from "../components/ChatList";
 
 
-const Chats = () => {
+const Chats = ({chats, setChats}) => {
 
     const { chatId } = useParams();
 
-    const [chats, setChats] = useState(initialChats);
+
 
     const { path, url } = useMatch('end');
 
